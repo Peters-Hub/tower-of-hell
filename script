@@ -1,0 +1,75 @@
+if game.PlaceId == 1962086868 then
+	local PetersHub = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+	local Window = PetersHub:MakeWindow({Name = "Peters Hub - Tower Of Hell", HidePremium = false, IntroEnabled = true , IntroText = "Welcome to Peters Hub",  SaveConfig = false, ConfigFolder = "PetersHubConfig"})
+	
+	--Values
+	_G.jump = true
+	_G.speed = true
+	_G.fullJump = true
+	
+	
+	--Fuctions
+	
+	function jump()
+		while _G.jump == true do
+			game.Players.LocalPlayer.Character.Humanoid.JumpPower = 120
+			wait(.000001)
+		 end
+		end
+	function fullJump()
+		while _G.fullJump == true do
+			game.Players.LocalPlayer.Character.Humanoid.JumpPower = 350
+			wait(.000001)
+		 end
+		end
+	
+	
+	function speed()
+		while _G.speed == true do
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+			wait(.000001)
+		 end
+		end
+
+	
+	
+	-- Tabs
+	
+	local PlayerTab = Window:MakeTab({
+		Name = "Player Tab",
+		Icon = "rbxassetid://4483345998",
+		PremiumOnly = false
+	})
+	
+	
+	--Toggles
+	
+	PlayerTab:AddToggle({
+		Name = "Enable High Jump",
+		Default = false,
+		Callback = function(Value)
+			_G.jump = Value
+			jump()
+		end    
+	})
+	
+	PlayerTab:AddToggle({
+		Name = "Enable High Speed",
+		Default = false,
+		Callback = function(Value)
+			_G.speed = Value
+			speed()
+		end    
+	})
+
+
+	PlayerTab:AddToggle({
+		Name = "Enable Full Jump",
+		Default = false,
+		Callback = function(Value)
+			_G.fullJump = Value
+			fullJump()
+		end    
+	})
+end
+	PetersHub:Init()
